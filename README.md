@@ -9,7 +9,7 @@ Grav plugin: Magic: The Gathering card names that show the card image from
 |---|---|
 | ![Card shown under the name](docs/hover.png) | ![Card in a centred sheet](docs/sheet.png) |
 
-(The captures use a placeholder instead of the card image.)
+Captures from [magicthegathering.fr](https://magicthegathering.fr). Card images and names are © Wizards of the Coast, served by Scryfall.
 
 ## Installation
 

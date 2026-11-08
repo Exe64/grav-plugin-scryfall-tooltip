@@ -1,0 +1,20 @@
+/* Scryfall Tooltip. Colours follow the theme's custom properties when it has them. */
+.scryfall-card { text-decoration-line: underline; text-decoration-style: dotted; text-decoration-thickness: 2px; text-underline-offset: .2em; }
+.scryfall-pop, .scryfall-sheet { color: var(--on-band, #f7f6f4); }
+.scryfall-pop img, .scryfall-sheet img { display: block; width: 100%; height: auto; aspect-ratio: 488 / 680; border-radius: 4.75% / 3.5%; background: var(--band-raise, #202024); }
+.scryfall-pop img[hidden], .scryfall-sheet img[hidden], .scryfall-pop-msg[hidden] { display: none; }
+.loading img { opacity: .35; }
+.scryfall-pop-msg { margin: 0; padding: 1rem; background: var(--band-raise, #202024); font-size: .9rem; }
+/* Hover or focus card, never taller than the window */
+.scryfall-pop { position: fixed; z-index: 50; width: min(244px, calc((100vh - 16px) * 488 / 680)); }
+.scryfall-pop[hidden] { display: none; }
+.scryfall-pop img { box-shadow: 0 14px 34px rgba(0, 0, 0, .5); }
+/* Touch screens: modal sheet (native dialog) over a dimmed page */
+.scryfall-sheet { width: min(84vw, 360px, calc((100vh - 7rem) * 488 / 680)); max-height: none; padding: .75rem; border: 0; border-radius: 14px; background: var(--band, #0e0e10); }
+/* Some themes (Pico CSS, Quark 2) style every dialog: flex, full-size, tinted. Put it back to a centred block */
+.scryfall-sheet { display: none; min-width: 0; min-height: 0; height: fit-content; margin: auto; backdrop-filter: none; }
+.scryfall-sheet[open] { display: block; }
+.scryfall-sheet::backdrop { background: rgba(0, 0, 0, .7); }
+.scryfall-pop-bar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin: .75rem 0 0; }
+.scryfall-pop-bar a { color: var(--accent-hover, #dec287); font-weight: 500; }
+.scryfall-sheet .scryfall-pop-bar button { min-width: 2.75rem; min-height: 2.75rem; border: 0; background: var(--band-raise, #202024); color: var(--on-band, #f7f6f4); font: inherit; cursor: pointer; }

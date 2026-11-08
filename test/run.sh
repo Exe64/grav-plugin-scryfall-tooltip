@@ -45,7 +45,7 @@ for f in scryfall-tooltip.js scryfall-tooltip.css; do code=$(curl -s -o /dev/nul
 grep -qiE 'fatal|exception' "$W/php.log" && ko "PHP errors: $(grep -iE 'fatal|exception' "$W/php.log" | head -2)" || ok "no PHP error in the log"
 
 echo "== browser"
-if [[ -n "${HOLD:-}" ]]; then echo "ready $B"; sleep "$HOLD"; elif command -v node >/dev/null && node -e "require('playwright-core')" 2>/dev/null; then
+if [[ -n "${HOLD:-}" ]]; then echo "ready $B"; sleep "$HOLD"; elif command -v node >/dev/null && (cd "$REPO" && node -e "require('playwright-core')") 2>/dev/null; then
   node "$REPO/test/browser.js" "$B" "$REPO/test/card.jpg" ${SHOTS:+"$SHOTS"} || fail=$((fail+1))
 else ko "playwright-core not found (npm i --no-save playwright-core && npx playwright-core install chromium)"; fi
 [[ $fail == 0 ]] && echo "ALL OK" || { echo "$fail FAILED"; exit 1; }

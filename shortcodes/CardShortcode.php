@@ -4,7 +4,7 @@ namespace Grav\Plugin\Shortcodes;
 use Thunder\Shortcode\Shortcode\ShortcodeInterface;
 
 /**
- * [carte]Foudre[/carte], [card]Lightning Bolt[/card], [carte="Lightning Bolt"]deux Foudres[/carte].
+ * [carte]Foudre[/carte], [card]Lightning Bolt[/card], [mtg]Lightning Bolt[/mtg], [carte="Lightning Bolt"]deux Foudres[/carte].
  * The name is looked up by Scryfall in any language: the image is the printing in that language.
  */
 class CardShortcode extends Shortcode
@@ -30,5 +30,7 @@ class CardShortcode extends Shortcode
         };
         $this->shortcode->getHandlers()->add('carte', $handler);
         $this->shortcode->getHandlers()->add('card', $handler);
+        // Less generic than [card], for sites where another plugin or theme already claims it
+        $this->shortcode->getHandlers()->add('mtg', $handler);
     }
 }

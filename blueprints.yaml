@@ -1,8 +1,8 @@
 name: Scryfall Tooltip
 slug: scryfall-tooltip
 type: plugin
-version: 1.0.0
-description: "Magic: The Gathering card names that show the card image from Scryfall on hover, keyboard focus or tap: [carte]Lightning Bolt[/carte]."
+version: 1.1.0
+description: "Magic: The Gathering card names that show the card image from Scryfall on hover, keyboard focus or tap: [carte]Lightning Bolt[/carte] or [mtg]Lightning Bolt[/mtg]."
 icon: image
 author:
   name: Julien Dumur
@@ -14,7 +14,7 @@ docs: https://github.com/Exe64/grav-plugin-scryfall-tooltip/blob/main/README.md
 bugs: https://github.com/Exe64/grav-plugin-scryfall-tooltip/issues
 keywords: [magic, mtg, scryfall, shortcode, tooltip, card]
 compatibility:
-  grav: ['2.2']
+  grav: ['2.0']
 dependencies:
   - { name: grav, version: '>=2.2.0' }
   - { name: shortcode-core, version: '>=5.0.0' }

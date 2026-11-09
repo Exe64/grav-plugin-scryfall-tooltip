@@ -28,9 +28,12 @@ Manual install: copy this repository to `user/plugins/scryfall-tooltip`, and ins
 ```
 [carte]Foudre[/carte]                          French name: French printing
 [card]Lightning Bolt[/card]                    English name: English printing
+[mtg]Lightning Bolt[/mtg]                      same as [card], under a name no other plugin is likely to claim
 [carte="Lightning Bolt"]deux Foudres[/carte]   shown text differs from the card name
 ```
 
+- `[carte]`, `[card]` and `[mtg]` do the same thing. If another plugin or theme already uses `[card]`
+  or `[carte]`, use `[mtg]`.
 - Each name becomes a link to the card on Scryfall (exact search), so it works without JavaScript.
 - The browser asks Scryfall for the image only when the reader hovers, focuses or taps the name:
   no request, no cookie, nothing third-party before that. Nothing is stored on the server.

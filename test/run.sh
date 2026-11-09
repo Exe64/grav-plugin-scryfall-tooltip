@@ -32,6 +32,7 @@ echo "== markup"
 get /home >/dev/null
 has '<a class="scryfall-card" href="https://scryfall.com/search?q=%21%22Foudre%22" data-card="Foudre">Foudre</a>' && ok "[carte]: link to Scryfall exact search" || ko "[carte] markup"
 has 'data-card="Llanowar Elves">Llanowar Elves</a>' && ok "[card] alias" || ko "[card]"
+has 'data-card="Counterspell">Counterspell</a>' && ok "[mtg] alias" || ko "[mtg]"
 has 'data-card="Lightning Bolt">deux Foudres</a>' && ok '[carte="Name"]text: name and text apart' || ko "bbcode name"
 has "data-card=\"Jace, l&apos;Arpenteur d&apos;esprit\">Jace, l&apos;Arpenteur d&apos;esprit</a>" && ! has '<b>d' && ok "apostrophe escaped, HTML removed" || ko "escaping: $(grep -o 'data-card="Jace[^<]*' "$W/page.html")"
 has 'href="https://scryfall.com/search?q=%21%22Kongming%2C%20%5C%22Sleeping%20Dragon%5C%22%22"' && ok "quotes in a name escaped for Scryfall's search" || ko "quoted name"

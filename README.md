@@ -1,6 +1,6 @@
 # Scryfall Tooltip
 
-(docs/grav-scryfall-tooltips-plugin.jpg)
+![Scryfall Tooltips Plugin for Grav](docs/grav-scryfall-tooltips-plugin.jpg)
 
 [![CI](https://github.com/Exe64/grav-plugin-scryfall-tooltip/actions/workflows/ci.yml/badge.svg)](https://github.com/Exe64/grav-plugin-scryfall-tooltip/actions/workflows/ci.yml)
 

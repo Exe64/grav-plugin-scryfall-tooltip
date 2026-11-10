@@ -99,7 +99,8 @@ git archive HEAD | tar -t | grep -E '^(test|\.github|doc)/|^\.gitignore$' || ech
 | 2026-11-10 | `HOLD=1 bash test/run.sh` (conteneur, balisage seul) | 15 `ok` : [scryfall], set=, set= number= lang=, set invalide ignoré, number sans set ignoré, [card] non traité | 15 `ok`, ALL OK | ✅ |
 | 2026-11-10 | API Scryfall en direct : `named?fuzzy=Foudre&set=m10`, `cards/m10/146/fr`, `set=zzz` | m10 en français ; impression exacte ; 404 | m10 fr n°146 ; 302 vers l'image ; 404 | ✅ |
 | 2026-11-10 | Aide dans la page de configuration (admin) | Tableau des shortcodes affiché | Non vérifié : pas d'admin dans le banc de test | ⏳ à regarder dans l'admin |
-| 2026-11-10 | Partie navigateur (JS passe de `data-card` à `data-img`) | Passe en CI | Non jouée en local | ⏳ CI |
+| 2026-11-10 | CI (run 42779174477, commit a898ece) : balisage + navigateur | ALL OK | 15 `ok` balisage + 4 `ok` navigateur (survol, clavier, carte introuvable, tactile), ALL OK | ✅ |
+| 2026-11-10 | Zip GitHub du tag v2.0.0 | Ni `test/`, `.github/`, `doc/`, `.gitignore` | assets, shortcodes, blueprints, docs, README, CHANGELOG, LICENSE uniquement | ✅ |
 | 2026-11-09 | `git archive` de l'index | Ni `test/`, `.github/`, `doc/`, `.gitignore`, `.gitattributes` | nothing excluded leaks | ✅ |
 
 ## Journal de session
@@ -111,5 +112,6 @@ git archive HEAD | tar -t | grep -E '^(test|\.github|doc)/|^\.gitignore$' || ech
 
 ### Session 2026-11-10
 - ✅ Fait : étapes 4 à 6 ; tests balisage, YAML, API Scryfall
-- 📋 Prochain : push, CI (partie navigateur), aide visible dans l'admin, tag v2.0.0
+- ✅ Fait : rebase sur 3 commits README distants, push, CI verte, tag v2.0.0 poussé
+- 📋 Prochain : vérifier l'aide dans la page de configuration de l'admin, puis ✅ Validation ; release GitHub v2.0.0 à créer (refusée en mode auto)
 - 🚧 Note : `lang` ajouté (non prévu au cadrage) : sans lui, `/cards/set/number` répond en anglais

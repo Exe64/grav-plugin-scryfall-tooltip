@@ -1,3 +1,9 @@
+# v2.0.2
+## 2026-11-10
+
+1. [](#improved)
+    * Usage documentation moved from the configuration page to the plugin description
+
 # v2.0.1
 ## 2026-11-10
 

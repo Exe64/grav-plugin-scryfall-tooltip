@@ -1,8 +1,33 @@
 name: Scryfall Tooltip
 slug: scryfall-tooltip
 type: plugin
-version: 2.0.1
-description: "Magic: The Gathering card names that show the card image from Scryfall on hover, keyboard focus or tap: [scryfall]Lightning Bolt[/scryfall]."
+version: 2.0.2
+description: |
+  Magic: The Gathering card names that show the card image from Scryfall on hover, keyboard focus or tap.
+
+  ## Usage
+
+  ```
+  [scryfall]Foudre[/scryfall]                                French name: French printing
+  [scryfall]Lightning Bolt[/scryfall]                        English name: English printing
+  [scryfall="Lightning Bolt"]deux Foudres[/scryfall]         shown text differs from the card name
+  [scryfall set=m10]Foudre[/scryfall]                        printing from that set, language of the name
+  [scryfall set=m10 number=146 lang=fr]Foudre[/scryfall]     one exact printing: set, collector number, language
+  ```
+
+  - `set` is the set code shown on Scryfall (`m10`, `lea`, `mh3`…).
+  - `number` is the collector number and needs `set`.
+  - `lang` (`fr`, `de`, `ja`…) needs `number`; without it that printing is in English.
+  - A value Scryfall cannot have is ignored: the card falls back to the printing Scryfall picks.
+
+  ## How it works
+
+  - Each name becomes a link to the card on Scryfall (exact search), so it works without JavaScript.
+  - The browser asks Scryfall for the image only when the reader hovers, focuses or taps the name: no request, no cookie, nothing third-party before that. Nothing is stored on the server.
+  - On touch screens the first tap opens the card in a centred sheet with a link to Scryfall; a tap outside, the close button or Escape closes it.
+  - To show the syntax itself in an article, wrap it in shortcode-core's `[raw]…[/raw]`: shortcodes are processed before Markdown, code included.
+  - Interface text in French when the page is `lang="fr"`, English otherwise.
+  - Styles use the theme's custom properties when present (`--band-raise`, `--on-band`, `--accent-hover`).
 icon: image
 author:
   name: Julien Dumur
@@ -32,31 +57,3 @@ form:
         0: PLUGIN_ADMIN.DISABLED
       validate:
         type: bool
-    usage:
-      type: display
-      label: Usage
-      markdown: true
-      content: |
-        | Shortcode | Shows |
-        |---|---|
-        | `[scryfall]Foudre[/scryfall]` | French name: French printing |
-        | `[scryfall]Lightning Bolt[/scryfall]` | English name: English printing |
-        | `[scryfall="Lightning Bolt"]deux Foudres[/scryfall]` | Shown text differs from the card name |
-        | `[scryfall set=m10]Foudre[/scryfall]` | Printing from that set, language of the name |
-        | `[scryfall set=m10 number=146 lang=fr]Foudre[/scryfall]` | One exact printing: set, collector number, language |
-
-        - `set` is the set code shown on Scryfall (`m10`, `lea`, `mh3`…).
-        - `number` is the collector number and needs `set`.
-        - `lang` (`fr`, `de`, `ja`…) needs `number`; without it that printing is in English.
-        - A value Scryfall cannot have is ignored: the card falls back to the printing Scryfall picks.
-    behavior:
-      type: display
-      label: How it works
-      markdown: true
-      content: |
-        - Each name becomes a link to the card on Scryfall (exact search), so it works without JavaScript.
-        - The browser asks Scryfall for the image only when the reader hovers, focuses or taps the name: no request, no cookie, nothing third-party before that. Nothing is stored on the server.
-        - On touch screens the first tap opens the card in a centred sheet with a link to Scryfall; a tap outside, the close button or Escape closes it.
-        - To show the syntax itself in an article (inline code or a code block), wrap it in shortcode-core's `[raw]…[/raw]`: shortcodes are processed before Markdown, code included.
-        - Interface text in French when the page is `lang="fr"`, English otherwise.
-        - Styles use the theme's custom properties when present (`--band-raise`, `--on-band`, `--accent-hover`).

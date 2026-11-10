@@ -1,3 +1,9 @@
+# v2.0.3
+## 2026-11-10
+
+1. [](#improved)
+    * Plugin description: the five shortcodes only, instead of the full usage text
+
 # v2.0.2
 ## 2026-11-10
 

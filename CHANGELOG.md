@@ -1,3 +1,9 @@
+# v2.0.1
+## 2026-11-10
+
+1. [](#improved)
+    * Full usage documentation in the plugin's configuration page: shortcode table, printing rules, how it works
+
 # v2.0.0
 ## 2026-11-10
 

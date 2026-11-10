@@ -1,11 +1,15 @@
-# v1.1.0
-## 2026-11-09
+# v2.0.0
+## 2026-11-10
 
 1. [](#new)
-    * `[mtg]` shortcode, same as `[card]` and `[carte]`, for sites where those names are already taken
+    * One shortcode, `[scryfall]`, a name no other plugin or theme is likely to claim
+    * Optional printing: `set=m10`, then `number=146` for one exact printing and `lang=fr` for its language
+    * Shortcode list in the plugin's configuration page
 1. [](#improved)
     * `compatibility: grav: ['2.0']`, the GPM convention (Grav 2.2 is still the minimum)
     * Release archives no longer include `test/`, `.github/` or `doc/`
+1. [](#bugfix)
+    * Breaking: `[card]` and `[carte]` are gone, replace them with `[scryfall]`
 
 # v1.0.0
 ## 2026-11-08

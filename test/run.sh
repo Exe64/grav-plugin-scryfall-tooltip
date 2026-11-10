@@ -30,13 +30,16 @@ has() { grep -qF -- "$1" "$W/page.html"; }
 
 echo "== markup"
 get /home >/dev/null
-has '<a class="scryfall-card" href="https://scryfall.com/search?q=%21%22Foudre%22" data-card="Foudre">Foudre</a>' && ok "[carte]: link to Scryfall exact search" || ko "[carte] markup"
-has 'data-card="Llanowar Elves">Llanowar Elves</a>' && ok "[card] alias" || ko "[card]"
-has 'data-card="Counterspell">Counterspell</a>' && ok "[mtg] alias" || ko "[mtg]"
-has 'data-card="Lightning Bolt">deux Foudres</a>' && ok '[carte="Name"]text: name and text apart' || ko "bbcode name"
-has "data-card=\"Jace, l&apos;Arpenteur d&apos;esprit\">Jace, l&apos;Arpenteur d&apos;esprit</a>" && ! has '<b>d' && ok "apostrophe escaped, HTML removed" || ko "escaping: $(grep -o 'data-card="Jace[^<]*' "$W/page.html")"
+has '<a class="scryfall-card" href="https://scryfall.com/search?q=%21%22Foudre%22" data-card="Foudre" data-img="https://api.scryfall.com/cards/named?format=image&amp;version=normal&amp;fuzzy=Foudre">Foudre</a>' && ok "[scryfall]: link to Scryfall exact search, image by name" || ko "[scryfall] markup"
+has 'data-card="Lightning Bolt" data-img="https://api.scryfall.com/cards/named?format=image&amp;version=normal&amp;fuzzy=Lightning%20Bolt">deux Foudres</a>' && ok '[scryfall="Name"]text: name and text apart' || ko "bbcode name"
+has "data-card=\"Jace, l&apos;Arpenteur d&apos;esprit\"" && ! has '<b>d' && ok "apostrophe escaped, HTML removed" || ko "escaping: $(grep -o 'data-card="Jace[^<]*' "$W/page.html")"
 has 'href="https://scryfall.com/search?q=%21%22Kongming%2C%20%5C%22Sleeping%20Dragon%5C%22%22"' && ok "quotes in a name escaped for Scryfall's search" || ko "quoted name"
-has 'data-card="Æther Vial">Æther Vial</a>' && ok "entity typed by the author decoded once" || ko "entity"
+has 'data-card="Æther Vial"' && has '>Æther Vial</a>' && ok "entity typed by the author decoded once" || ko "entity"
+has 'href="https://scryfall.com/search?q=%21%22Counterspell%22%20set%3Am10" data-card="Counterspell" data-img="https://api.scryfall.com/cards/named?format=image&amp;version=normal&amp;fuzzy=Counterspell&amp;set=m10"' && ok "set=: that set, lowercased, in the link and the image" || ko "set: $(grep -o 'data-card="Counterspell"[^>]*' "$W/page.html")"
+has 'href="https://scryfall.com/search?q=%21%22Foudre%20M10%22%20set%3Am10%20cn%3A146%20lang%3Afr" data-card="Foudre M10" data-img="https://api.scryfall.com/cards/m10/146/fr?format=image&amp;version=normal"' && ok "set= number= lang=: one exact printing" || ko "number: $(grep -o 'data-card="Foudre M10"[^>]*' "$W/page.html")"
+has 'data-img="https://api.scryfall.com/cards/named?format=image&amp;version=normal&amp;fuzzy=Shock">' && ok "invalid set ignored" || ko "invalid set: $(grep -o 'data-card="Shock"[^>]*' "$W/page.html")"
+has 'fuzzy=Opt">' && ok "number without set ignored" || ko "number without set"
+has '[card]Duress[/card]' && ok "[card] no longer handled" || ko "[card] still handled"
 has 'scryfall-tooltip.js' && has 'scryfall-tooltip.css' && ok "assets on a page with cards" || ko "assets missing"
 get /home >/dev/null
 has 'scryfall-tooltip.js' && ok "assets on the cached page too" || ko "assets missing from cache"

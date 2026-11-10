@@ -1,8 +1,8 @@
 name: Scryfall Tooltip
 slug: scryfall-tooltip
 type: plugin
-version: 1.1.0
-description: "Magic: The Gathering card names that show the card image from Scryfall on hover, keyboard focus or tap: [carte]Lightning Bolt[/carte] or [mtg]Lightning Bolt[/mtg]."
+version: 2.0.0
+description: "Magic: The Gathering card names that show the card image from Scryfall on hover, keyboard focus or tap: [scryfall]Lightning Bolt[/scryfall]."
 icon: image
 author:
   name: Julien Dumur
@@ -32,3 +32,19 @@ form:
         0: PLUGIN_ADMIN.DISABLED
       validate:
         type: bool
+    usage:
+      type: display
+      label: Shortcodes
+      markdown: true
+      content: |
+        Copy one into a page and replace the values. The card name can be in any language.
+
+        | Shortcode | Shows |
+        |---|---|
+        | `[scryfall]Lightning Bolt[/scryfall]` | The card, in the language of the name |
+        | `[scryfall="Lightning Bolt"]two Bolts[/scryfall]` | The card, with another text in the page |
+        | `[scryfall set=m10]Lightning Bolt[/scryfall]` | The printing from one set (set code as on Scryfall) |
+        | `[scryfall set=m10 number=146 lang=fr]Foudre[/scryfall]` | One exact printing: set, collector number, language (English without `lang`) |
+
+        `number` needs `set`, `lang` needs `number`; a value Scryfall cannot have is ignored.
+        To show the syntax itself in a page, wrap it in `[raw]…[/raw]`.

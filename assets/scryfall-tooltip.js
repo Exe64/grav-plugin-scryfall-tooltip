@@ -4,7 +4,6 @@
 (function () {
   var links = document.querySelectorAll('a.scryfall-card');
   if (!links.length) return;
-  var API = 'https://api.scryfall.com/cards/named?format=image&version=normal&fuzzy=';
   var fr = (document.documentElement.lang || '').slice(0, 2) === 'fr';
   var T = fr ? { open: 'Voir sur Scryfall', close: 'Fermer', missing: 'Carte introuvable sur Scryfall.' }
              : { open: 'View on Scryfall', close: 'Close', missing: 'Card not found on Scryfall.' };
@@ -22,13 +21,14 @@
       el.classList.remove('loading'); img.hidden = true; msg.hidden = false;
       if (el === pop && !pop.hidden && owner) place(owner);
     });
-    el.load = function (name) {
-      img.alt = name;
-      if (img.dataset.card === name) return;
-      img.dataset.card = name; img.hidden = false; msg.hidden = true;
+    // The image URL comes from the shortcode (data-img): name, or set / number / lang
+    el.load = function (a) {
+      img.alt = a.dataset.card;
+      if (img.dataset.img === a.dataset.img) return;
+      img.dataset.img = a.dataset.img; img.hidden = false; msg.hidden = true;
       el.classList.add('loading');
       img.removeAttribute('src'); // never show the previous card while the next one loads
-      img.src = API + encodeURIComponent(name);
+      img.src = a.dataset.img;
     };
     document.body.appendChild(el);
     return el;
@@ -46,7 +46,7 @@
   }
   function show(a, how) {
     clearTimeout(later);
-    pop.load(a.dataset.card);
+    pop.load(a);
     owner = a; by = how;
     pop.hidden = false;
     place(a);
@@ -73,7 +73,7 @@
       sheet.addEventListener('click', function (e) { if (e.target === sheet) sheet.close(); });
     }
     hide();
-    sheet.load(a.dataset.card);
+    sheet.load(a);
     sheet.setAttribute('aria-label', a.dataset.card);
     sheet.querySelector('.scryfall-pop-bar a').href = a.href;
     sheet.showModal();

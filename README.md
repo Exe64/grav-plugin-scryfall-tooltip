@@ -26,14 +26,17 @@ Manual install: copy this repository to `user/plugins/scryfall-tooltip`, and ins
 ## Usage
 
 ```
-[carte]Foudre[/carte]                          French name: French printing
-[card]Lightning Bolt[/card]                    English name: English printing
-[mtg]Lightning Bolt[/mtg]                      same as [card], under a name no other plugin is likely to claim
-[carte="Lightning Bolt"]deux Foudres[/carte]   shown text differs from the card name
+[scryfall]Foudre[/scryfall]                                French name: French printing
+[scryfall]Lightning Bolt[/scryfall]                        English name: English printing
+[scryfall="Lightning Bolt"]deux Foudres[/scryfall]         shown text differs from the card name
+[scryfall set=m10]Foudre[/scryfall]                        printing from that set, language of the name
+[scryfall set=m10 number=146 lang=fr]Foudre[/scryfall]     one exact printing: set, collector number, language
 ```
 
-- `[carte]`, `[card]` and `[mtg]` do the same thing. If another plugin or theme already uses `[card]`
-  or `[carte]`, use `[mtg]`.
+- `set` is the set code shown on Scryfall (`m10`, `lea`, `mh3`…). `number` is the collector number and
+  needs `set`; `lang` (`fr`, `de`, `ja`…) needs `number`, and without it that printing is in English.
+  A value Scryfall cannot have is ignored: the card falls back to the printing Scryfall picks.
+- The same list is in the plugin's configuration page in the admin.
 - Each name becomes a link to the card on Scryfall (exact search), so it works without JavaScript.
 - The browser asks Scryfall for the image only when the reader hovers, focuses or taps the name:
   no request, no cookie, nothing third-party before that. Nothing is stored on the server.

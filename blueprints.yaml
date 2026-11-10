@@ -1,14 +1,13 @@
 name: Scryfall Tooltip
 slug: scryfall-tooltip
 type: plugin
-version: 2.0.3
+version: 2.0.4
 description: |
   Magic: The Gathering card names that show the card image from Scryfall on hover, keyboard focus or tap.
 
   ```
   [scryfall]Foudre[/scryfall]
   [scryfall]Lightning Bolt[/scryfall]
-  [scryfall="Lightning Bolt"]deux Foudres[/scryfall]
   [scryfall set=m10]Foudre[/scryfall]
   [scryfall set=m10 number=146 lang=fr]Foudre[/scryfall]
   ```

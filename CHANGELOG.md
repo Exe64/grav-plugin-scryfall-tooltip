@@ -1,3 +1,9 @@
+# v2.0.4
+## 2026-11-10
+
+1. [](#bugfix)
+    * Plugin description: no double quotes, getgrav.org escaped them twice on the plugin card
+
 # v2.0.3
 ## 2026-11-10
 

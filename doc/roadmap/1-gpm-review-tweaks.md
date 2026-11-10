@@ -113,5 +113,5 @@ git archive HEAD | tar -t | grep -E '^(test|\.github|doc)/|^\.gitignore$' || ech
 ### Session 2026-11-10
 - ✅ Fait : étapes 4 à 6 ; tests balisage, YAML, API Scryfall
 - ✅ Fait : rebase sur 3 commits README distants, push, CI verte, tag v2.0.0 poussé
-- 📋 Prochain : vérifier l'aide dans la page de configuration de l'admin, puis ✅ Validation ; release GitHub v2.0.0 à créer (refusée en mode auto)
+- 📋 Prochain : vérifier l'aide dans la page de configuration de l'admin, puis ✅ Validation ; release GitHub v2.0.0 créée le 2026-11-10 ; mise à jour depuis l'admin de mtggrav bloquée (user/plugins non inscriptible par PHP, côté serveur)
 - 🚧 Note : `lang` ajouté (non prévu au cadrage) : sans lui, `/cards/set/number` répond en anglais

@@ -1,6 +1,6 @@
 # Roadmap Scryfall Tooltip
 
-> Backlog actif. Dernière mise à jour : 2026-11-09.
+> Backlog actif. Dernière mise à jour : 2026-11-10.
 
 ## Contexte
 
@@ -16,7 +16,7 @@ Plans locaux (voir `doc/roadmap/`).
 
 Plan : [`1-gpm-review-tweaks.md`](1-gpm-review-tweaks.md)
 
-Retouches de la revue GPM : compatibility 2.0, .gitattributes export-ignore, alias [mtg]. Version 1.1.0.
+Retouches de la revue GPM et shortcode unique [scryfall] avec édition facultative. Version 2.0.0.
 
 ---
 
